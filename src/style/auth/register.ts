@@ -1,53 +1,53 @@
 import { StyleSheet } from "react-native";
 import { colors } from "../colors";
 
-export const loginStyle = StyleSheet.create({
-  login: {
+export const registerStyle = StyleSheet.create({
+  register: {
     flex: 1,
+    backgroundColor: colors.background_color,
   },
 
-  login_header: {
-    height: "50%",
-    width: "200%",
-    marginLeft: "-50%",
+  register_header: {
+    height: "35%",
+    width: "160%",
+    marginLeft: "-30%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "center",
     gap: 8,
-    padding: 72,
-    borderBottomLeftRadius: 500,
-    borderBottomRightRadius: 500,
-    zIndex: 1,
+    padding: 42,
+    borderBottomLeftRadius: 400,
+    borderBottomRightRadius: 400,
   },
-  login_header_title: {
-    fontSize: 32,
+  register_header_image: {
+    height: 112,
+    width: 112,
+  },
+  register_header_title: {
+    fontSize: 28,
     color: colors.white_color,
     fontFamily: "Regular",
   },
-  login_header_text: {
+  register_header_text: {
     fontFamily: "Regular",
     color: colors.white_color,
-    marginTop: -4,
+    marginTop: -8,
   },
 
-  login_body: {
+  register_body: {
     flex: 1,
-    marginTop: -80,
-    paddingTop: 40,
-    backgroundColor: colors.background_color,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: 14,
+    gap: 16,
   },
-  login_body_title: {
+  register_body_text: {
     fontFamily: "Bold",
-    color: colors.font_color,
     fontSize: 20,
   },
-  login_body_input: {
+  register_body_input: {
     height: 48,
     width: "80%",
     paddingHorizontal: 16,
@@ -56,14 +56,9 @@ export const loginStyle = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: colors.white_color,
   },
-  login_body_boxInput: {
+  register_body_inputBox: {
     width: "100%",
     display: "flex",
     alignItems: "center",
-  },
-  login_body_secure: {
-    position: "absolute",
-    marginTop: 12,
-    right: "15%",
   },
 });
