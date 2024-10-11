@@ -13,10 +13,12 @@ export default function Input({ tools }: Tools) {
       <TextInput
         value={tools.value}
         placeholder={tools.placeholder}
+        placeholderTextColor="#B3BBC0"
         returnKeyType={tools.keyType}
+        keyboardType={tools.keyboardType ? tools.keyboardType : "default"}
         secureTextEntry={tools.secure && isSecure}
-        onFocus={() => tools.setIsFocuse(true)}
-        onSubmitEditing={() => tools.setIsFocuse(false)}
+        onFocus={() => tools.setIsFocuse && tools.setIsFocuse(true)}
+        onSubmitEditing={() => tools.setIsFocuse && tools.setIsFocuse(false)}
         onChangeText={tools.setOnChange}
         style={tools.style}
       />
