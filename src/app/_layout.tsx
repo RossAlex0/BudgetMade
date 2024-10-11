@@ -10,6 +10,7 @@ export default function RootLayout() {
     Regular: require("../../assets/fonts/Poppins-Regular.ttf"),
     Bold: require("../../assets/fonts/Poppins-Bold.ttf"),
     ExtraLight: require("../../assets/fonts/Poppins-ExtraLight.ttf"),
+    SemiBold: require("../../assets/fonts/Poppins-SemiBold.ttf"),
   });
 
   useEffect(() => {
