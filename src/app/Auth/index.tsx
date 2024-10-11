@@ -1,4 +1,4 @@
-import { loginStyle } from "@/src/style/auth/login";
+import { useState } from "react";
 import {
   Text,
   TextInput,
@@ -8,17 +8,20 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { colors } from "@/src/style/colors";
-import Button from "@/src/component/Button";
-import { useState } from "react";
+
 import Icon from "react-native-vector-icons/Ionicons";
+import Button from "@/src/component/Button";
+
+import { colors } from "@/src/style/colors";
+import { loginStyle } from "@/src/style/auth/login";
+import Input from "@/src/component/Input";
 
 export default function Login() {
   const logo = require("../../../assets/logo/logo.png");
 
   const [userLog, setUserLog] = useState({ email: "", password: "" });
-  const [isSecure, setIsSecure] = useState(true);
   const [isFocuse, setIsFocuse] = useState(false);
 
   return (
@@ -41,42 +44,39 @@ export default function Login() {
       </LinearGradient>
       <View style={loginStyle.login_body}>
         <Text style={loginStyle.login_body_title}>Connexion</Text>
-        <TextInput
-          value={userLog.email}
-          placeholder="Adresse Email"
-          returnKeyType="done"
-          onFocus={() => setIsFocuse(true)}
-          onSubmitEditing={() => setIsFocuse(false)}
-          onChangeText={(value) => setUserLog({ ...userLog, email: value })}
-          style={loginStyle.login_body_input}
+        <Input
+          tools={{
+            value: userLog.email,
+            placeholder: "Adresse Email",
+            keyType: "done",
+            secure: false,
+            setIsFocuse: setIsFocuse,
+            setOnChange: (value) => setUserLog({ ...userLog, email: value }),
+            style: loginStyle.login_body_input,
+          }}
         />
         <View style={loginStyle.login_body_boxInput}>
-          <TextInput
-            value={userLog.password}
-            placeholder="Mot de passe"
-            returnKeyType="done"
-            secureTextEntry={isSecure}
-            onFocus={() => setIsFocuse(true)}
-            onSubmitEditing={() => setIsFocuse(false)}
-            onChangeText={(value) =>
-              setUserLog({ ...userLog, password: value })
-            }
-            style={[loginStyle.login_body_input, { marginBottom: 12 }]}
+          <Input
+            tools={{
+              value: userLog.password,
+              placeholder: "Mot de passe",
+              keyType: "done",
+              secure: true,
+              setIsFocuse: setIsFocuse,
+              setOnChange: (value) =>
+                setUserLog({ ...userLog, password: value }),
+              style: [loginStyle.login_body_input, { marginBottom: 12 }],
+            }}
           />
-          <Pressable
-            onPress={() => setIsSecure(!isSecure)}
-            style={loginStyle.login_body_secure}
-          >
-            <Icon
-              name={isSecure ? "eye-outline" : "eye-off-outline"}
-              size={28}
-            />
-          </Pressable>
         </View>
         {!isFocuse && (
           <>
             <Button text="Se connecter" theme="purple" />
-            <Button text="Nouveau ? Créer un compte" theme="white" />
+            <Button
+              text="Nouveau ? Créer un compte"
+              theme="white"
+              click={() => router.push("/Auth/Register")}
+            />
           </>
         )}
       </View>
