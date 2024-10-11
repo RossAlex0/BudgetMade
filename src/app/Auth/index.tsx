@@ -49,6 +49,7 @@ export default function Login() {
             value: userLog.email,
             placeholder: "Adresse Email",
             keyType: "done",
+            keyboardType: "email-address",
             secure: false,
             setIsFocuse: setIsFocuse,
             setOnChange: (value) => setUserLog({ ...userLog, email: value }),

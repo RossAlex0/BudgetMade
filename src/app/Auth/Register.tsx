@@ -54,6 +54,7 @@ export default function Register() {
             value: userSignUp.email,
             placeholder: "Adresse Email",
             keyType: "done",
+            keyboardType: "email-address",
             secure: false,
             setIsFocuse: setIsFocuse,
             setOnChange: (value) =>
@@ -90,7 +91,11 @@ export default function Register() {
             }}
           />
         </View>
-        <Button text="Créer un compte" theme="purple" />
+        <Button
+          text="Créer un compte"
+          theme="purple"
+          click={() => router.push("/Auth/Account")}
+        />
         <Button
           text="Déjà un compte ? Connectez-vous"
           theme="white"
