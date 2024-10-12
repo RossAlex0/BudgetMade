@@ -12,7 +12,7 @@ export const AccountStyle = StyleSheet.create({
     paddingTop: 80,
   },
   account_header: {
-    height: "10%",
+    height: "7%",
     width: "100%",
     paddingHorizontal: 32,
     display: "flex",
@@ -37,7 +37,7 @@ export const AccountStyle = StyleSheet.create({
   },
 
   account_body: {
-    height: "70%",
+    height: "73%",
     width: "100%",
     display: "flex",
     flexDirection: "column",
@@ -102,9 +102,9 @@ export const BudgetAccountStyle = StyleSheet.create({
 export const CategoryAccountStyle = StyleSheet.create({
   title: {
     fontFamily: "Bold",
-    fontSize: 21,
+    fontSize: 17,
     textAlign: "center",
-    width: "80%",
+    width: "60%",
   },
   box: {
     height: 48,
@@ -157,11 +157,59 @@ export const CategoryAccountStyle = StyleSheet.create({
     fontSize: 17,
   },
   categories_element_text: {
-    fontFamily: "ExtraLight",
+    fontFamily: "Regular",
+    color: colors.gray_dark,
   },
   categories_element_icon: {
     position: "absolute",
     top: 12,
     left: 8,
+  },
+});
+
+export const SpendingAccountStyle = StyleSheet.create({
+  title: {
+    width: "80%",
+    fontFamily: "Bold",
+    textAlign: "center",
+    fontSize: 17,
+  },
+  body: {
+    height: "auto",
+    width: "80%",
+  },
+  body_element: {
+    width: "100%",
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray_color,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  body_element_text: {
+    flex: 1,
+    fontFamily: "Bold",
+    paddingTop: 4,
+    marginLeft: 12,
+  },
+  body_element_box: {
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: colors.gray_color,
+    borderRadius: 8,
+    height: 48,
+    width: "40%",
+  },
+  body_element_boxInput: {
+    width: "100%",
+    paddingLeft: 8,
+  },
+  body_element_boxIcon: {
+    position: "absolute",
+    right: 8,
   },
 });
