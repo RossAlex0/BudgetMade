@@ -157,7 +157,8 @@ export const CategoryAccountStyle = StyleSheet.create({
     fontSize: 17,
   },
   categories_element_text: {
-    fontFamily: "ExtraLight",
+    fontFamily: "Regular",
+    color: colors.gray_dark,
   },
   categories_element_icon: {
     position: "absolute",
