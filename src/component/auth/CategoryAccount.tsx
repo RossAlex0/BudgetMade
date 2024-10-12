@@ -8,8 +8,8 @@ import { getAllCategory } from "@/src/service/request/get";
 import { postCategoryQuery } from "@/src/service/request/post";
 import { CategoriesInterface } from "@/src/service/type/apiType/categoryType";
 
-import { CategoryAccountStyle } from "@/src/style/auth/account";
 import LottieView from "lottie-react-native";
+import { CategoryAccountStyle } from "@/src/style/auth/account";
 
 export default function CategoryAccount() {
   const [categoriesData, setCategoriesData] = useState<
