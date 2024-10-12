@@ -44,25 +44,15 @@ export default function AccountConfig() {
         </View>
         <Text style={AccountStyle.account_header_text}>Étapes {counter}/3</Text>
       </View>
-      <View style={AccountStyle.account_body}>
-        {counter === 1 && <BudgetAccount />}
-        {counter === 2 && <CategoryAccount />}
-        {counter === 3 && <SpendingAccount />}
-      </View>
-      <View style={AccountStyle.account_footer}>
-        <Button
-          text="Confirmer"
-          theme="purple"
-          click={() => setCounter(counter + 1)}
-        />
-        {counter !== 1 && (
-          <Button
-            text="Plus tard"
-            theme="white"
-            click={() => setCounter(counter - 1)}
-          />
-        )}
-      </View>
+      {counter === 1 && (
+        <BudgetAccount counter={counter} setCounter={setCounter} />
+      )}
+      {counter === 2 && (
+        <CategoryAccount counter={counter} setCounter={setCounter} />
+      )}
+      {counter === 3 && (
+        <SpendingAccount counter={counter} setCounter={setCounter} />
+      )}
     </View>
   );
 }

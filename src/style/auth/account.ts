@@ -97,6 +97,10 @@ export const BudgetAccountStyle = StyleSheet.create({
     right: "5%",
     opacity: 0.7,
   },
+  error: {
+    fontFamily: "Regular",
+    color: "red",
+  },
 });
 
 export const CategoryAccountStyle = StyleSheet.create({
