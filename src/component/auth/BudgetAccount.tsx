@@ -5,7 +5,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Input from "../Input";
 
 import { BudgetAccountStyle } from "@/src/style/auth/account";
-import { colors } from "@/src/style/colors";
 
 export default function BudgetAccount() {
   const money = require("../../../assets/images/money.png");

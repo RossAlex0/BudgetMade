@@ -147,6 +147,11 @@ export const CategoryAccountStyle = StyleSheet.create({
     paddingVertical: 8,
     marginBottom: 16,
   },
+  categories_element_lottie: {
+    margin: "auto",
+    width: 300,
+    height: 300,
+  },
   categories_element_title: {
     fontFamily: "SemiBold",
     fontSize: 17,

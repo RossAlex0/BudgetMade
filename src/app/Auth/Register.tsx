@@ -2,7 +2,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { Image, Pressable, Text, TextInput, View } from "react-native";
 
-import Icon from "react-native-vector-icons/Ionicons";
 import Button from "@/src/component/Button";
 
 import { colors } from "@/src/style/colors";
