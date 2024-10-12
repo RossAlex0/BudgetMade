@@ -7,10 +7,14 @@ import Button from "@/src/component/Button";
 import { colors } from "@/src/style/colors";
 import { registerStyle } from "@/src/style/auth/register";
 import Input from "@/src/component/Input";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { postUser } from "@/src/service/request/post";
+import { UserContext } from "@/src/service/context/UserContext";
+import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 export default function Register() {
   const logo = require("../../../assets/logo/logo.png");
+  const { setUserId } = useContext(UserContext) as UserContextInterface;
 
   const [isFocuse, setIsFocuse] = useState(false);
   const [userSignUp, setUserSignUp] = useState({
@@ -19,6 +23,17 @@ export default function Register() {
     password: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const HandleCreateUser = async () => {
+    if (
+      userSignUp.password === confirmPassword &&
+      userSignUp.email !== "" &&
+      userSignUp.name !== ""
+    ) {
+      postUser(userSignUp, setUserId);
+      router.push("/Auth/Account");
+    }
+  };
 
   return (
     <View style={registerStyle.register}>
@@ -93,7 +108,7 @@ export default function Register() {
         <Button
           text="Créer un compte"
           theme="purple"
-          click={() => router.push("/Auth/Account")}
+          click={HandleCreateUser}
         />
         <Button
           text="Déjà un compte ? Connectez-vous"
