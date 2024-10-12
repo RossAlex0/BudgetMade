@@ -10,6 +10,7 @@ import { CategoriesInterface } from "@/src/service/type/apiType/categoryType";
 
 import LottieView from "lottie-react-native";
 import { CategoryAccountStyle } from "@/src/style/auth/account";
+import { colors } from "@/src/style/colors";
 
 export default function CategoryAccount() {
   const [categoriesData, setCategoriesData] = useState<
@@ -61,6 +62,7 @@ export default function CategoryAccount() {
             <Icon
               name={category.icon}
               size={20}
+              color={colors.gray_dark}
               style={CategoryAccountStyle.categories_element_icon}
             />
           </Pressable>

@@ -1,9 +1,10 @@
-import { SpendingAccountStyle } from "@/src/style/auth/account";
 import { Text, View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/Ionicons";
-import Input from "../Input";
 import { useState } from "react";
+import Icon from "react-native-vector-icons/Ionicons";
+
+import Input from "../Input";
+
+import { SpendingAccountStyle } from "@/src/style/auth/account";
 
 export default function SpendingAccount() {
   const [spend, setSpend] = useState("");
