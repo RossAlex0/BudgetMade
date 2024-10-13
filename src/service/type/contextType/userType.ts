@@ -5,6 +5,7 @@ export interface UserLog {
   password: string;
   salary: string | number | null;
   theme: string;
+  token: string;
 }
 
 export interface UserContextInterface {
