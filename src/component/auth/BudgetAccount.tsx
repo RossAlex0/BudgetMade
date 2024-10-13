@@ -72,13 +72,6 @@ export default function BudgetAccount({
         </View>
         <View style={AccountStyle.account_footer}>
           <Button text="Confirmer" theme="purple" click={HandleConfirmSalary} />
-          {counter !== 1 && (
-            <Button
-              text="Plus tard"
-              theme="white"
-              click={() => setCounter(counter - 1)}
-            />
-          )}
         </View>
       </>
     )

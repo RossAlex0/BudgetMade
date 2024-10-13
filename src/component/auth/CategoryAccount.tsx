@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import LottieView from "lottie-react-native";
 
@@ -7,11 +7,16 @@ import Button from "../Button";
 import Input from "../Input";
 
 import { getAllCategory } from "@/src/service/request/get";
-import { postCategoryQuery } from "@/src/service/request/post";
+import {
+  postCategoryQuery,
+  postUserCategory,
+} from "@/src/service/request/post";
 import { CategoriesInterface } from "@/src/service/type/apiType/categoryType";
 
 import { AccountStyle, CategoryAccountStyle } from "@/src/style/auth/account";
 import { colors } from "@/src/style/colors";
+import { UserContext } from "@/src/service/context/UserContext";
+import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 export default function CategoryAccount({
   counter,
@@ -20,10 +25,12 @@ export default function CategoryAccount({
   counter: number;
   setCounter: (counter: number) => void;
 }) {
+  const { userLog } = useContext(UserContext) as UserContextInterface;
   const [categoriesData, setCategoriesData] = useState<
     CategoriesInterface[] | undefined
   >();
   const [category, setcategory] = useState("");
+  const [categoriesSelect, setCategoriesSelect] = useState<number[]>([]);
 
   useEffect(() => {
     postCategoryQuery(setCategoriesData, category);
@@ -31,6 +38,25 @@ export default function CategoryAccount({
       getAllCategory(setCategoriesData);
     }
   }, [category]);
+
+  const HandleClickCategory = (id: number) => {
+    if (categoriesSelect.includes(id)) {
+      setCategoriesSelect(
+        categoriesSelect.filter((categoryId) => categoryId !== id)
+      );
+    } else {
+      setCategoriesSelect([...categoriesSelect, id]);
+    }
+  };
+
+  const HandlePostCategory = () => {
+    if (userLog && categoriesSelect.length !== 0) {
+      categoriesSelect?.map((category) =>
+        postUserCategory(userLog.id, category)
+      );
+      setCounter(counter + 1);
+    }
+  };
   return (
     <>
       <View style={AccountStyle.account_body}>
@@ -59,7 +85,15 @@ export default function CategoryAccount({
           {categoriesData?.map((category) => (
             <Pressable
               key={category.id}
-              style={CategoryAccountStyle.categories_element}
+              style={
+                categoriesSelect.includes(category.id)
+                  ? [
+                      CategoryAccountStyle.categories_element,
+                      { borderColor: "#8516D1", backgroundColor: "#FAF6FD" },
+                    ]
+                  : CategoryAccountStyle.categories_element
+              }
+              onPress={() => HandleClickCategory(category.id)}
             >
               <Text style={CategoryAccountStyle.categories_element_title}>
                 {category.name}
@@ -70,7 +104,11 @@ export default function CategoryAccount({
               <Icon
                 name={category.icon}
                 size={20}
-                color={colors.gray_dark}
+                color={
+                  categoriesSelect.includes(category.id)
+                    ? "#8516D1"
+                    : colors.gray_dark
+                }
                 style={CategoryAccountStyle.categories_element_icon}
               />
             </Pressable>
@@ -86,18 +124,12 @@ export default function CategoryAccount({
         </ScrollView>
       </View>
       <View style={AccountStyle.account_footer}>
+        <Button text="Confirmer" theme="purple" click={HandlePostCategory} />
         <Button
-          text="Confirmer"
-          theme="purple"
-          click={() => setCounter(counter + 1)}
+          text="Plus tard"
+          theme="white"
+          click={() => setCounter(counter - 1)}
         />
-        {counter !== 1 && (
-          <Button
-            text="Plus tard"
-            theme="white"
-            click={() => setCounter(counter - 1)}
-          />
-        )}
       </View>
     </>
   );
