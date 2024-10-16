@@ -7,14 +7,22 @@ export function putUser(id: number, salary: number) {
     .catch((error) => console.error(error.message));
 }
 
-export function putUserCategory(id: number, state: test[]) {
+export function putUserCategory(
+  id: number,
+  state: { id: string; value: string }[]
+) {
   return myAxios
     .put(`/usercategory/${id}`, state)
     .then((response) => response.status)
     .catch((error) => console.error(error.message));
 }
 
-interface test {
-  id: string;
-  value: string;
+export function putUserPassword(
+  id: number,
+  user: { current: string; password: string; check: string }
+) {
+  return myAxios
+    .put(`/password/users/${id}`, user)
+    .then((response) => response.status)
+    .catch((error) => console.error(error.message));
 }
