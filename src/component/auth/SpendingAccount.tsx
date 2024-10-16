@@ -38,7 +38,7 @@ export default function SpendingAccount({
       const status = await putUserCategory(userLog.id, capCategories);
       await getUserById(userLog.id, setUserLog);
       if (status) {
-        router.push("/(tabs)");
+        router.push("/tabs/");
       }
     }
   };
