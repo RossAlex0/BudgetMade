@@ -1,0 +1,135 @@
+import { StyleSheet } from "react-native";
+import { colors } from "../colors";
+
+export const SettingStyle = StyleSheet.create({
+  settings: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: colors.background_color,
+  },
+  settings_header: {
+    height: "30%",
+    width: "100%",
+    backgroundColor: colors.primary_color,
+    paddingHorizontal: 28,
+    paddingTop: 52,
+    paddingBottom: 24,
+  },
+  settings_header_title: {
+    fontFamily: "SemiBold",
+    color: colors.white_color,
+    fontSize: 22,
+  },
+  settings_header_name: {
+    width: "100%",
+    textAlign: "center",
+    fontFamily: "SemiBold",
+    fontSize: 20,
+    color: colors.white_color,
+    marginTop: 16,
+  },
+  settings_header_email: {
+    width: "100%",
+    textAlign: "center",
+    color: colors.white_color,
+    fontSize: 18,
+  },
+  settings_header_btn: {
+    width: "120%",
+    marginTop: 16,
+    marginLeft: "-10%",
+    display: "flex",
+    alignItems: "center",
+  },
+
+  settings_body: {
+    flex: 1,
+    paddingHorizontal: 24,
+    paddingVertical: 32,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  settings_body_passw: {
+    width: "120%",
+    display: "flex",
+    alignItems: "center",
+  },
+  settings_body_passwIcon: {
+    position: "absolute",
+    right: "15%",
+    top: 12,
+  },
+  settings_body_element: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: 24,
+  },
+  settings_body_elementBlock: {
+    height: 64,
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  settings_body_elementBlockB: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    gap: 8,
+  },
+  settings_body_elementBlock_icon: {
+    backgroundColor: "#FAF6FD",
+    padding: 8,
+  },
+  settings_body_elementBlock_text: {
+    fontFamily: "SemiBold",
+    fontSize: 14,
+  },
+  setting_footer: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
+  setting_footer_container: {
+    height: "50%",
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
+    paddingTop: 40,
+    paddingBottom: 12,
+    backgroundColor: colors.background_color,
+    borderTopLeftRadius: 48,
+    borderTopRightRadius: 48,
+  },
+  setting_footer_text: {
+    width: "80%",
+    fontFamily: "SemiBold",
+    fontSize: 18,
+  },
+  setting_footer_input: {
+    fontSize: 15,
+  },
+  setting_footer_boxInput: {
+    height: 48,
+    width: "80%",
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    borderColor: colors.gray_color,
+    display: "flex",
+    justifyContent: "center",
+  },
+  input_icon: {
+    position: "absolute",
+    marginTop: 12,
+    right: "10%",
+  },
+});
