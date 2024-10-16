@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -20,17 +20,24 @@ import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 export default function Login() {
   const logo = require("../../../assets/logo/logo.png");
-  const { setUserLog } = useContext(UserContext) as UserContextInterface;
+  const { userLog, setUserLog } = useContext(
+    UserContext
+  ) as UserContextInterface;
 
   const [userSign, setUserSign] = useState({ email: "", password: "" });
   const [isFocuse, setIsFocuse] = useState(false);
 
+  // useEffect(() => {
+  //   if (!userLog) {
+  //     router.push("/tabs/");
+  //   }
+  // }, []);
   const HandlePostLogin = async () => {
     if (userSign.email !== "" && userSign.email !== "") {
       const response = await postLogin(userSign);
       if (response) {
         setUserLog(response);
-        router.replace("/(tabs)");
+        router.replace("/tabs/");
       }
     }
   };
@@ -91,7 +98,7 @@ export default function Login() {
             <Button
               text="Nouveau ? Créer un compte"
               theme="white"
-              click={() => router.push("/Auth/Register")}
+              click={() => router.push("/auth/Register")}
             />
           </>
         )}
