@@ -27,11 +27,6 @@ export default function Login() {
   const [userSign, setUserSign] = useState({ email: "", password: "" });
   const [isFocuse, setIsFocuse] = useState(false);
 
-  // useEffect(() => {
-  //   if (!userLog) {
-  //     router.push("/tabs/");
-  //   }
-  // }, []);
   const HandlePostLogin = async () => {
     if (userSign.email !== "" && userSign.email !== "") {
       const response = await postLogin(userSign);

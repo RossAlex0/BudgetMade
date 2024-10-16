@@ -31,7 +31,7 @@ export default function Register() {
       userSignUp.name !== ""
     ) {
       postUser(userSignUp, setUserId);
-      router.push("/Auth/Account");
+      router.push("/auth/Account");
     }
   };
 
