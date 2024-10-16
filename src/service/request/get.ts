@@ -1,9 +1,10 @@
 import { UserCatInterface } from "../type/apiType/userCategoryType";
+import { CategoriesJoinInterface } from "../type/apiType/userCatJoinCat";
 import { UserLog } from "../type/contextType/userType";
 import { myAxios } from "../utils/instance";
 
 export function getUserById(id: number, setter: (state: UserLog) => void) {
-  myAxios
+  return myAxios
     .get(`/users/${id}`)
     .then((response) => setter(response.data))
     .catch((error) => console.error(error.message));
@@ -24,5 +25,15 @@ export function getUserCategoryById(
   myAxios
     .get(`/usercategory/${id}`)
     .then((res) => (state ? setter([...state, res.data]) : setter(res.data)))
+    .catch((err) => console.error(err));
+}
+
+export function getUserJoinCategoryById(
+  id: string | number,
+  setter: (state: CategoriesJoinInterface[]) => void
+) {
+  myAxios
+    .get(`/usercategoryall/${id}`)
+    .then((res) => setter(res.data))
     .catch((err) => console.error(err));
 }

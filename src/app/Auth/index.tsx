@@ -1,28 +1,39 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Text,
-  TextInput,
   View,
   Image,
-  Pressable,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 
-import Icon from "react-native-vector-icons/Ionicons";
 import Button from "@/src/component/Button";
 
 import { colors } from "@/src/style/colors";
 import { loginStyle } from "@/src/style/auth/login";
 import Input from "@/src/component/Input";
+import { postLogin } from "@/src/service/request/post";
+import { UserContext } from "@/src/service/context/UserContext";
+import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 export default function Login() {
   const logo = require("../../../assets/logo/logo.png");
+  const { setUserLog } = useContext(UserContext) as UserContextInterface;
 
-  const [userLog, setUserLog] = useState({ email: "", password: "" });
+  const [userSign, setUserSign] = useState({ email: "", password: "" });
   const [isFocuse, setIsFocuse] = useState(false);
+
+  const HandlePostLogin = async () => {
+    if (userSign.email !== "" && userSign.email !== "") {
+      const response = await postLogin(userSign);
+      if (response) {
+        setUserLog(response);
+        router.replace("/(tabs)");
+      }
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -46,33 +57,37 @@ export default function Login() {
         <Text style={loginStyle.login_body_title}>Connexion</Text>
         <Input
           tools={{
-            value: userLog.email,
+            value: userSign.email,
             placeholder: "Adresse Email",
             keyType: "done",
             keyboardType: "email-address",
             secure: false,
             setIsFocuse: setIsFocuse,
-            setOnChange: (value) => setUserLog({ ...userLog, email: value }),
+            setOnChange: (value) => setUserSign({ ...userSign, email: value }),
             style: loginStyle.login_body_input,
           }}
         />
         <View style={loginStyle.login_body_boxInput}>
           <Input
             tools={{
-              value: userLog.password,
+              value: userSign.password,
               placeholder: "Mot de passe",
               keyType: "done",
               secure: true,
               setIsFocuse: setIsFocuse,
               setOnChange: (value) =>
-                setUserLog({ ...userLog, password: value }),
+                setUserSign({ ...userSign, password: value }),
               style: [loginStyle.login_body_input, { marginBottom: 12 }],
             }}
           />
         </View>
         {!isFocuse && (
           <>
-            <Button text="Se connecter" theme="purple" />
+            <Button
+              text="Se connecter"
+              theme="purple"
+              click={HandlePostLogin}
+            />
             <Button
               text="Nouveau ? Créer un compte"
               theme="white"

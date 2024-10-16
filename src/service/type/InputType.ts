@@ -1,5 +1,5 @@
 export interface ToolsInput {
-  value: string | number | undefined;
+  value: string | undefined;
   placeholder: string;
   keyType: "done" | "go" | "next" | "search" | "send";
   keyboardType?: "numeric" | "email-address";

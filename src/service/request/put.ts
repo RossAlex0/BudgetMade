@@ -7,9 +7,14 @@ export function putUser(id: number, salary: number) {
     .catch((error) => console.error(error.message));
 }
 
-export function putUserCategory(id: number, cap: string, category_id: number) {
+export function putUserCategory(id: number, state: test[]) {
   return myAxios
-    .put(`/usercategory/${id}`, { cap, category_id })
+    .put(`/usercategory/${id}`, state)
     .then((response) => response.status)
     .catch((error) => console.error(error.message));
+}
+
+interface test {
+  id: string;
+  value: string;
 }
