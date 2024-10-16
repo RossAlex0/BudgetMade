@@ -7,6 +7,7 @@ export interface ToolsInput {
   setIsFocuse?: (value: boolean) => void;
   setOnChange: (value: any) => void;
   style: object;
+  icon?: object;
 }
 
 export interface Tools {
