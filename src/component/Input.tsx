@@ -25,7 +25,7 @@ export default function Input({ tools }: Tools) {
       {tools.secure && (
         <Pressable
           onPress={() => setIsSecure(!isSecure)}
-          style={inputStyle.icon}
+          style={tools.icon ? tools.icon : inputStyle.icon}
         >
           <Icon
             name={!isSecure ? "eye-outline" : "eye-off-outline"}
