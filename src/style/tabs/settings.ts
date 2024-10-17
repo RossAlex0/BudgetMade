@@ -42,6 +42,11 @@ export const SettingStyle = StyleSheet.create({
     display: "flex",
     alignItems: "center",
   },
+  headerIcon: {
+    position: "absolute",
+    top: 52,
+    right: 28,
+  },
 
   settings_body: {
     flex: 1,
@@ -111,6 +116,18 @@ export const SettingStyle = StyleSheet.create({
   },
   setting_footer_containerProfil: {
     height: "42%",
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
+    paddingTop: 40,
+    paddingBottom: 12,
+    backgroundColor: colors.background_color,
+    borderTopLeftRadius: 48,
+    borderTopRightRadius: 48,
+  },
+  setting_footer_containerLogout: {
+    height: "27%",
     width: "100%",
     display: "flex",
     alignItems: "center",
