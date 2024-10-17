@@ -1,6 +1,8 @@
 import { Tabs } from "expo-router";
 import { Text } from "react-native";
+
 import Icon from "react-native-vector-icons/Ionicons";
+
 import { colors } from "@/src/style/colors";
 
 export default function TabsLayout() {
