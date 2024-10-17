@@ -1,10 +1,14 @@
-import { Switch, Text, View } from "react-native";
+import { Pressable, Switch, Text, View } from "react-native";
 import { Link } from "expo-router";
 import { useContext, useState } from "react";
 
 import Icon from "react-native-vector-icons/Ionicons";
 import Button from "@/src/component/Button";
-import { PasswordModal, ProfilModal } from "@/src/component/tabs/modal";
+import {
+  LogoutModal,
+  PasswordModal,
+  ProfilModal,
+} from "@/src/component/tabs/modal";
 
 import { UserContext } from "@/src/service/context/UserContext";
 import { UserContextInterface } from "@/src/service/type/contextType/userType";
@@ -17,6 +21,7 @@ export default function Settings() {
 
   const [passwordIsSelect, setPasswordIsSelect] = useState<boolean>(false);
   const [profilIsSelect, setProfilIsSelect] = useState<boolean>(false);
+  const [logoutIsSelect, setLogoutIsSelect] = useState<boolean>(false);
 
   return (
     <>
@@ -36,6 +41,12 @@ export default function Settings() {
               />
             </Link>
           </View>
+          <Pressable
+            style={SettingStyle.headerIcon}
+            onPress={() => setLogoutIsSelect(true)}
+          >
+            <Icon name="log-out-outline" size={32} color={colors.white_color} />
+          </Pressable>
         </View>
         <View style={SettingStyle.settings_body}>
           <View style={SettingStyle.settings_body_passw}>
@@ -97,6 +108,10 @@ export default function Settings() {
       <ProfilModal
         profilIsSelect={profilIsSelect}
         setProfilIsSelect={setProfilIsSelect}
+      />
+      <LogoutModal
+        logoutIsSelect={logoutIsSelect}
+        setLogoutIsSelect={setLogoutIsSelect}
       />
     </>
   );
