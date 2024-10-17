@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { router, Stack } from "expo-router";
+
 import { UserContext } from "../service/context/UserContext";
 import { UserContextInterface } from "../service/type/contextType/userType";
-import { router, Stack } from "expo-router";
 
 export default function App() {
   const { userLog } = useContext(UserContext) as UserContextInterface;
