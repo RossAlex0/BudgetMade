@@ -1,4 +1,4 @@
-import { Modal, Switch, Text, View } from "react-native";
+import { Switch, Text, View } from "react-native";
 import { Link } from "expo-router";
 import { useContext, useState } from "react";
 

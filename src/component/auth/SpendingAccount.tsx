@@ -1,17 +1,18 @@
-import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
-import { useContext, useEffect, useRef, useState } from "react";
-import Icon from "react-native-vector-icons/Ionicons";
+import { ScrollView, Text, TextInput, View } from "react-native";
+import { useContext, useEffect, useState } from "react";
+import { router } from "expo-router";
 
+import Icon from "react-native-vector-icons/Ionicons";
 import Button from "../Button";
 
-import { AccountStyle, SpendingAccountStyle } from "@/src/style/auth/account";
 import { UserCatInterface } from "@/src/service/type/apiType/userCategoryType";
 import { getUserById, getUserCategoryById } from "@/src/service/request/get";
 import { UserContext } from "@/src/service/context/UserContext";
 import { UserContextInterface } from "@/src/service/type/contextType/userType";
 import { putUserCategory } from "@/src/service/request/put";
+
+import { AccountStyle, SpendingAccountStyle } from "@/src/style/auth/account";
 import { colors } from "@/src/style/colors";
-import { router } from "expo-router";
 
 export default function SpendingAccount({
   counter,

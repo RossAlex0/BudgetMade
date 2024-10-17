@@ -1,12 +1,13 @@
-import { UserContext } from "@/src/service/context/UserContext";
-import { getUserJoinCategoryById } from "@/src/service/request/get";
-import { CategoriesJoinInterface } from "@/src/service/type/apiType/userCatJoinCat";
-import { UserContextInterface } from "@/src/service/type/contextType/userType";
-import { Link, router } from "expo-router";
 import { useContext, useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 
 import Icon from "react-native-vector-icons/Ionicons";
+
+import { UserContext } from "@/src/service/context/UserContext";
+import { CategoriesJoinInterface } from "@/src/service/type/apiType/userCatJoinCat";
+import { UserContextInterface } from "@/src/service/type/contextType/userType";
+import { getUserJoinCategoryById } from "@/src/service/request/get";
+
 import { HomeStyle } from "@/src/style/tabs/home";
 
 export default function Home() {

@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import { Image, Pressable, Text, TextInput, View } from "react-native";
+import { Image, Text, View } from "react-native";
 
 import Button from "@/src/component/Button";
 
@@ -14,6 +14,7 @@ import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 export default function Register() {
   const logo = require("../../../assets/logo/logo.png");
+
   const { setUserId } = useContext(UserContext) as UserContextInterface;
 
   const [isFocuse, setIsFocuse] = useState(false);

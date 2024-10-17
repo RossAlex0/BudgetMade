@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { Animated, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import Button from "@/src/component/Button";
-
-import { AccountStyle } from "@/src/style/auth/account";
-import { colors } from "@/src/style/colors";
 import BudgetAccount from "@/src/component/auth/BudgetAccount";
 import CategoryAccount from "@/src/component/auth/CategoryAccount";
 import SpendingAccount from "@/src/component/auth/SpendingAccount";
+
+import { AccountStyle } from "@/src/style/auth/account";
+import { colors } from "@/src/style/colors";
 
 export default function AccountConfig() {
   const [counter, setCounter] = useState(1);

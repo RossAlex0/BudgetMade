@@ -1,9 +1,9 @@
-import { Slot, Stack } from "expo-router";
+import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
+
 import { UserProvider } from "../service/context/UserContext";
-import { View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
