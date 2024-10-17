@@ -12,11 +12,11 @@ import {
   postUserCategory,
 } from "@/src/service/request/post";
 import { CategoriesInterface } from "@/src/service/type/apiType/categoryType";
+import { UserContext } from "@/src/service/context/UserContext";
+import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 import { AccountStyle, CategoryAccountStyle } from "@/src/style/auth/account";
 import { colors } from "@/src/style/colors";
-import { UserContext } from "@/src/service/context/UserContext";
-import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 export default function CategoryAccount({
   counter,

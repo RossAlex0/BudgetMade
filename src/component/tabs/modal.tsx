@@ -5,6 +5,7 @@ import Input from "../Input";
 import Button from "../Button";
 
 import { putUserPassword, putUserProfil } from "@/src/service/request/put";
+import { getUserById } from "@/src/service/request/get";
 import {
   PasswordModalInterface,
   ProfilModaleInterface,
@@ -13,7 +14,6 @@ import { UserContext } from "@/src/service/context/UserContext";
 import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 import { SettingStyle } from "@/src/style/tabs/settings";
-import { getUserById } from "@/src/service/request/get";
 
 export function PasswordModal({
   passwordIsSelect,

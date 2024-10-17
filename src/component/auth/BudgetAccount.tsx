@@ -1,11 +1,11 @@
 import { Text, Image, View } from "react-native";
 import { useContext, useState } from "react";
-import Icon from "react-native-vector-icons/Ionicons";
 
 import { putUser } from "@/src/service/request/put";
 import { UserContext } from "@/src/service/context/UserContext";
 import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
+import Icon from "react-native-vector-icons/Ionicons";
 import Input from "../Input";
 import Button from "../Button";
 
