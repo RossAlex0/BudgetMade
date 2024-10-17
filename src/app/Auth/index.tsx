@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import {
   Text,
   View,
@@ -10,13 +10,14 @@ import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 
 import Button from "@/src/component/Button";
-
-import { colors } from "@/src/style/colors";
-import { loginStyle } from "@/src/style/auth/login";
 import Input from "@/src/component/Input";
+
 import { postLogin } from "@/src/service/request/post";
 import { UserContext } from "@/src/service/context/UserContext";
 import { UserContextInterface } from "@/src/service/type/contextType/userType";
+
+import { colors } from "@/src/style/colors";
+import { loginStyle } from "@/src/style/auth/login";
 
 export default function Login() {
   const logo = require("../../../assets/logo/logo.png");
