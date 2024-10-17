@@ -7,6 +7,7 @@ import Button from "../Button";
 import { putUserPassword, putUserProfil } from "@/src/service/request/put";
 import { getUserById } from "@/src/service/request/get";
 import {
+  LogoutModaleInterface,
   PasswordModalInterface,
   ProfilModaleInterface,
 } from "@/src/service/type/tabsType/modal";
@@ -14,6 +15,8 @@ import { UserContext } from "@/src/service/context/UserContext";
 import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 import { SettingStyle } from "@/src/style/tabs/settings";
+import { destroyDataStorage } from "@/src/service/request/storage";
+import { router } from "expo-router";
 
 export function PasswordModal({
   passwordIsSelect,
@@ -29,7 +32,10 @@ export function PasswordModal({
 
   const HandleUpdatePasseword = async () => {
     if (updatePassword.password === updatePassword.check && userLog) {
-      const response = await putUserPassword(userLog.id, updatePassword);
+      const response = await putUserPassword(
+        parseInt(userLog.id),
+        updatePassword
+      );
       if (response === 204) {
         setPasswordIsSelect(false);
         setUpdatePassword({ current: "", password: "", check: "" });
@@ -125,9 +131,9 @@ export function ProfilModal({
 
   const HandleUpdateProfil = async () => {
     if (updateProfil.name && updateProfil.email && userLog) {
-      const response = await putUserProfil(userLog.id, updateProfil);
+      const response = await putUserProfil(parseInt(userLog.id), updateProfil);
       if (response === 204) {
-        await getUserById(userLog.id, setUserLog);
+        await getUserById(parseInt(userLog.id), setUserLog);
         setProfilIsSelect(false);
       }
     }
@@ -178,6 +184,43 @@ export function ProfilModal({
             text="Annuler"
             theme="white"
             click={() => setProfilIsSelect(false)}
+          />
+        </View>
+      </View>
+    </Modal>
+  );
+}
+
+export function LogoutModal({
+  logoutIsSelect,
+  setLogoutIsSelect,
+}: LogoutModaleInterface) {
+  const { setUserLog } = useContext(UserContext) as UserContextInterface;
+
+  const HandleLogout = async () => {
+    await destroyDataStorage();
+    setUserLog(null);
+    router.push("/auth/");
+  };
+  return (
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={logoutIsSelect}
+      statusBarTranslucent
+      onRequestClose={() => setLogoutIsSelect(false)}
+    >
+      <View style={SettingStyle.setting_footer}>
+        <View style={SettingStyle.setting_footer_containerLogout}>
+          <Text style={SettingStyle.setting_footer_text}>
+            Vous allez être déconnecté
+          </Text>
+
+          <Button text="Se déconnecter" theme="purple" click={HandleLogout} />
+          <Button
+            text="Annuler"
+            theme="white"
+            click={() => setLogoutIsSelect(false)}
           />
         </View>
       </View>

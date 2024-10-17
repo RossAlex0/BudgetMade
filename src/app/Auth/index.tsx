@@ -18,6 +18,7 @@ import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 import { colors } from "@/src/style/colors";
 import { loginStyle } from "@/src/style/auth/login";
+import { postDataStorage } from "@/src/service/request/storage";
 
 export default function Login() {
   const logo = require("../../../assets/logo/logo.png");
@@ -31,8 +32,9 @@ export default function Login() {
   const HandlePostLogin = async () => {
     if (userSign.email !== "" && userSign.email !== "") {
       const response = await postLogin(userSign);
+      console.info(response);
       if (response) {
-        setUserLog(response);
+        await postDataStorage(response);
         router.replace("/tabs/");
       }
     }
