@@ -5,17 +5,25 @@ import { UserContext } from "../service/context/UserContext";
 import { UserContextInterface } from "../service/type/contextType/userType";
 
 export default function App() {
-  const { userLog } = useContext(UserContext) as UserContextInterface;
+  const { userLog, isLoading } = useContext(
+    UserContext
+  ) as UserContextInterface;
 
   useEffect(() => {
     setTimeout(() => {
-      if (userLog) {
-        router.push("/tabs/");
-      } else {
-        router.push("/auth/");
+      if (!isLoading) {
+        if (userLog) {
+          router.push("/tabs/");
+        } else {
+          router.push("/auth/");
+        }
       }
     }, 100);
-  }, []);
+  }, [isLoading]);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <Stack>

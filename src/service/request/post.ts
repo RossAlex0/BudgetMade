@@ -1,11 +1,12 @@
 import { myAxios } from "../utils/instance";
 
 import { UserInterface } from "../type/apiType/userType";
+import { postDataStorage } from "./storage";
 
-export function postUser(user: UserInterface, setter: (state: number) => void) {
-  myAxios
+export function postUser(user: UserInterface) {
+  return myAxios
     .post("/users", user)
-    .then((response) => setter(response.data.insertId))
+    .then((response) => console.info(response.data.insertId))
     .catch((error) => console.error(error.message));
 }
 
@@ -30,5 +31,12 @@ export function postLogin(user: { email: string; password: string }) {
   return myAxios
     .post("/login", user)
     .then((res) => res.data)
+    .catch((err) => console.error(err));
+}
+
+export function postSignToken(email: string) {
+  return myAxios
+    .post("/sign", email)
+    .then((res) => postDataStorage(res.data))
     .catch((err) => console.error(err));
 }
