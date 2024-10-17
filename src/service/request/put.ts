@@ -26,3 +26,13 @@ export function putUserPassword(
     .then((response) => response.status)
     .catch((error) => console.error(error.message));
 }
+
+export function putUserProfil(
+  id: number,
+  user: { name: string; email: string }
+) {
+  return myAxios
+    .put(`/profil/users/${id}`, user)
+    .then((response) => response.status)
+    .catch((error) => console.error(error.message));
+}
