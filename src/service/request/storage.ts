@@ -1,20 +1,29 @@
 import * as SecureStore from "expo-secure-store";
 
-const storageKeys = ["id", "name", "mail", "city", "token"];
+const storageKeys = [
+  "idBm",
+  "nameBm",
+  "emailBm",
+  "themeBm",
+  "salaryBm",
+  "tokenBm",
+];
 
-const postDataStorage = async (
-  id: string,
-  name: string,
-  mail: string,
-  city: string,
-  token: string
-) => {
+const postDataStorage = async (data: {
+  id: string;
+  name: string;
+  email: string;
+  salary: string;
+  theme: string;
+  token: string;
+}) => {
   try {
-    await SecureStore.setItemAsync("token", token);
-    await SecureStore.setItemAsync("id", id);
-    await SecureStore.setItemAsync("mail", mail);
-    await SecureStore.setItemAsync("city", city);
-    await SecureStore.setItemAsync("name", name);
+    await SecureStore.setItemAsync("tokenBm", `${data.token}`);
+    await SecureStore.setItemAsync("idBm", `${data.id}`);
+    await SecureStore.setItemAsync("emailBm", `${data.email}`);
+    await SecureStore.setItemAsync("salaryBm", `${data.salary}`);
+    await SecureStore.setItemAsync("themeBm", `${data.theme}`);
+    await SecureStore.setItemAsync("nameBm", `${data.name}`);
   } catch (error) {
     console.error("Error storing data:", error);
   }
@@ -23,36 +32,23 @@ const postDataStorage = async (
 const getDataStorage = async (): Promise<{
   id: string;
   name: string;
-  mail: string;
-  city: string;
+  email: string;
+  salary: string | null;
+  theme: string;
   token: string;
 }> => {
   try {
-    const name = (await SecureStore.getItemAsync("name")) || "";
-    const mail = (await SecureStore.getItemAsync("mail")) || "";
-    const city = (await SecureStore.getItemAsync("city")) || "";
-    const id = (await SecureStore.getItemAsync("id")) || "";
-    const token = (await SecureStore.getItemAsync("token")) || "";
-
-    return { id: id, name: name, mail: mail, city: city, token: token };
+    const name = (await SecureStore.getItemAsync("nameBm")) || "";
+    const email = (await SecureStore.getItemAsync("emailBm")) || "";
+    const salary = (await SecureStore.getItemAsync("salaryBm")) || "";
+    const id = (await SecureStore.getItemAsync("idBm")) || "";
+    const theme = (await SecureStore.getItemAsync("themeBm")) || "";
+    const token = (await SecureStore.getItemAsync("tokenBm")) || "";
+    console.info("stor", id, name, email, token, salary);
+    return { id, name, email, salary, token, theme };
   } catch (error) {
     console.error(error);
-    return { id: "", name: "", mail: "", city: "", token: "" };
-  }
-};
-
-const getPrivateStorage = async (): Promise<{
-  id: string | null;
-  token: string | null;
-}> => {
-  try {
-    const id = (await SecureStore.getItemAsync("id")) || null;
-    const token = (await SecureStore.getItemAsync("token")) || null;
-
-    return { id, token };
-  } catch (error) {
-    console.error(error);
-    return { id: null, token: null };
+    return { id: "", name: "", email: "", salary: "", token: "", theme: "" };
   }
 };
 
@@ -63,9 +59,4 @@ const destroyDataStorage = async () => {
     console.error("Error deleting items:", error);
   }
 };
-export {
-  postDataStorage,
-  getDataStorage,
-  getPrivateStorage,
-  destroyDataStorage,
-};
+export { postDataStorage, getDataStorage, destroyDataStorage };
