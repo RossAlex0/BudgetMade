@@ -109,6 +109,18 @@ export const SettingStyle = StyleSheet.create({
     borderTopLeftRadius: 48,
     borderTopRightRadius: 48,
   },
+  setting_footer_containerProfil: {
+    height: "42%",
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
+    paddingTop: 40,
+    paddingBottom: 12,
+    backgroundColor: colors.background_color,
+    borderTopLeftRadius: 48,
+    borderTopRightRadius: 48,
+  },
   setting_footer_text: {
     width: "80%",
     fontFamily: "SemiBold",

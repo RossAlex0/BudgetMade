@@ -1,33 +1,23 @@
-import Button from "@/src/component/Button";
-import { UserContext } from "@/src/service/context/UserContext";
-import { UserContextInterface } from "@/src/service/type/contextType/userType";
+import { Modal, Switch, Text, View } from "react-native";
 import { Link } from "expo-router";
 import { useContext, useState } from "react";
-import { Modal, Switch, Text, View } from "react-native";
+
 import Icon from "react-native-vector-icons/Ionicons";
+import Button from "@/src/component/Button";
+import { PasswordModal, ProfilModal } from "@/src/component/tabs/modal";
+
+import { UserContext } from "@/src/service/context/UserContext";
+import { UserContextInterface } from "@/src/service/type/contextType/userType";
+
 import { SettingStyle } from "@/src/style/tabs/settings";
 import { colors } from "@/src/style/colors";
-import Input from "@/src/component/Input";
-import { putUserPassword } from "@/src/service/request/put";
 
 export default function Settings() {
   const { userLog } = useContext(UserContext) as UserContextInterface;
-  const [passwordIsSelect, setPasswordIsSelect] = useState<boolean>(false);
-  const [updatePassword, setUpdatePassword] = useState({
-    current: "",
-    password: "",
-    check: "",
-  });
 
-  const HandleUpdatePasseword = async () => {
-    if (updatePassword.password === updatePassword.check && userLog) {
-      const response = await putUserPassword(userLog.id, updatePassword);
-      if (response === 204) {
-        setPasswordIsSelect(false);
-        setUpdatePassword({ current: "", password: "", check: "" });
-      }
-    }
-  };
+  const [passwordIsSelect, setPasswordIsSelect] = useState<boolean>(false);
+  const [profilIsSelect, setProfilIsSelect] = useState<boolean>(false);
+
   return (
     <>
       <View style={SettingStyle.settings}>
@@ -39,7 +29,11 @@ export default function Settings() {
           </Text>
           <View style={SettingStyle.settings_header_btn}>
             <Link href={"/"} asChild>
-              <Button text="Éditer le profil" theme="white" />
+              <Button
+                text="Éditer le profil"
+                theme="white"
+                click={() => setProfilIsSelect(true)}
+              />
             </Link>
           </View>
         </View>
@@ -96,78 +90,14 @@ export default function Settings() {
           </View>
         </View>
       </View>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={passwordIsSelect}
-        statusBarTranslucent
-        onRequestClose={() => setPasswordIsSelect(false)}
-      >
-        <View style={SettingStyle.setting_footer}>
-          <View style={SettingStyle.setting_footer_container}>
-            <Text style={SettingStyle.setting_footer_text}>
-              Modifier le mot de passe
-            </Text>
-            <View style={SettingStyle.setting_footer_boxInput}>
-              <Input
-                tools={{
-                  value: updatePassword.current,
-                  placeholder: "Ancien mot de passe",
-                  keyType: "done",
-                  secure: true,
-                  setOnChange: (value) =>
-                    setUpdatePassword({ ...updatePassword, current: value }),
-                  style: SettingStyle.setting_footer_input,
-                  icon: SettingStyle.input_icon,
-                }}
-              />
-            </View>
-            <View style={SettingStyle.setting_footer_boxInput}>
-              <Input
-                tools={{
-                  value: updatePassword.password,
-                  placeholder: "Nouveau mot de passe",
-                  keyType: "done",
-                  secure: true,
-                  setOnChange: (value) =>
-                    setUpdatePassword({ ...updatePassword, password: value }),
-                  style: SettingStyle.setting_footer_input,
-                  icon: SettingStyle.input_icon,
-                }}
-              />
-            </View>
-            <View
-              style={[
-                SettingStyle.setting_footer_boxInput,
-                { marginBottom: 8 },
-              ]}
-            >
-              <Input
-                tools={{
-                  value: updatePassword.check,
-                  placeholder: "Confirmation mot de passe",
-                  keyType: "done",
-                  secure: true,
-                  setOnChange: (value) =>
-                    setUpdatePassword({ ...updatePassword, check: value }),
-                  style: SettingStyle.setting_footer_input,
-                  icon: SettingStyle.input_icon,
-                }}
-              />
-            </View>
-            <Button
-              text="Enregister"
-              theme="purple"
-              click={HandleUpdatePasseword}
-            />
-            <Button
-              text="Annuler"
-              theme="white"
-              click={() => setPasswordIsSelect(false)}
-            />
-          </View>
-        </View>
-      </Modal>
+      <PasswordModal
+        passwordIsSelect={passwordIsSelect}
+        setPasswordIsSelect={setPasswordIsSelect}
+      />
+      <ProfilModal
+        profilIsSelect={profilIsSelect}
+        setProfilIsSelect={setProfilIsSelect}
+      />
     </>
   );
 }
