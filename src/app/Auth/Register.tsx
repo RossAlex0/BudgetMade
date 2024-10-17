@@ -1,21 +1,22 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { Image, Text, View } from "react-native";
+import { useContext, useState } from "react";
 
+import Input from "@/src/component/Input";
 import Button from "@/src/component/Button";
+
+import { postSignToken, postUser } from "@/src/service/request/post";
 
 import { colors } from "@/src/style/colors";
 import { registerStyle } from "@/src/style/auth/register";
-import Input from "@/src/component/Input";
-import { useContext, useState } from "react";
-import { postUser } from "@/src/service/request/post";
 import { UserContext } from "@/src/service/context/UserContext";
 import { UserContextInterface } from "@/src/service/type/contextType/userType";
 
 export default function Register() {
   const logo = require("../../../assets/logo/logo.png");
 
-  const { setUserId } = useContext(UserContext) as UserContextInterface;
+  const { reload, setReload } = useContext(UserContext) as UserContextInterface;
 
   const [isFocuse, setIsFocuse] = useState(false);
   const [userSignUp, setUserSignUp] = useState({
@@ -31,7 +32,9 @@ export default function Register() {
       userSignUp.email !== "" &&
       userSignUp.name !== ""
     ) {
-      postUser(userSignUp, setUserId);
+      await postUser(userSignUp);
+      await postSignToken(userSignUp.email);
+      setReload(!reload);
       router.push("/auth/Account");
     }
   };
