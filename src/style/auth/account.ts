@@ -59,8 +59,16 @@ export const AccountStyle = StyleSheet.create({
   },
 });
 
+export const BankAccountStyle = StyleSheet.create({
+  image: {
+    marginTop: 80,
+    marginBottom: 56,
+  },
+});
+
 export const BudgetAccountStyle = StyleSheet.create({
   image: {
+    marginTop: 32,
     marginBottom: 56,
   },
   title: {
