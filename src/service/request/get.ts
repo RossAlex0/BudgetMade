@@ -33,7 +33,7 @@ export function getUserJoinCategoryById(
   setter: (state: CategoriesJoinInterface[]) => void
 ) {
   myAxios
-    .get(`/usercategoryall/${id}`)
+    .get(`/usercategoryall/${id.toString()}`)
     .then((res) => setter(res.data))
     .catch((err) => console.error(err));
 }
