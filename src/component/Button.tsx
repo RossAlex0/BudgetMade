@@ -1,11 +1,15 @@
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, View } from "react-native";
+import React, { forwardRef } from "react";
 
 import { ButtonInterface } from "../service/type/ButtonType";
 import { buttonStyle } from "../style/component/button";
 
 import { colors } from "../style/colors";
 
-export default function Button({ text, theme, click }: ButtonInterface) {
+const Button = forwardRef<View, ButtonInterface>(function Button(
+  { text, theme, click },
+  ref
+) {
   const colorStyle =
     theme === "purple" ? colors.primary_color : colors.white_color;
 
@@ -20,6 +24,7 @@ export default function Button({ text, theme, click }: ButtonInterface) {
   return (
     <Pressable
       onPress={click}
+      ref={ref}
       style={[
         buttonStyle.pressable,
         { backgroundColor: colorStyle },
@@ -29,4 +34,6 @@ export default function Button({ text, theme, click }: ButtonInterface) {
       <Text style={[buttonStyle.text, { color: textStyle }]}>{text}</Text>
     </Pressable>
   );
-}
+});
+
+export default Button;
