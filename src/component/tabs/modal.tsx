@@ -32,10 +32,7 @@ export function PasswordModal({
 
   const HandleUpdatePasseword = async () => {
     if (updatePassword.password === updatePassword.check && userLog) {
-      const response = await putUserPassword(
-        parseInt(userLog.id),
-        updatePassword
-      );
+      const response = await putUserPassword(userLog.id, updatePassword);
       if (response === 204) {
         setPasswordIsSelect(false);
         setUpdatePassword({ current: "", password: "", check: "" });
