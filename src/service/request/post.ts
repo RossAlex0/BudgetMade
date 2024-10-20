@@ -20,7 +20,7 @@ export function postCategoryQuery(
     .catch((error) => console.error(error.message));
 }
 
-export function postUserCategory(user_id: number, category_id: number) {
+export function postUserCategory(user_id: string, category_id: number) {
   return myAxios
     .post("/usercategory", { user_id, category_id })
     .then((res) => res.data)
@@ -36,7 +36,17 @@ export function postLogin(user: { email: string; password: string }) {
 
 export function postSignToken(email: string) {
   return myAxios
-    .post("/sign", email)
+    .post("/sign", { email })
     .then((res) => postDataStorage(res.data))
+    .catch((err) => console.error(err));
+}
+
+export function postExpenseBycategory(
+  id: string | number,
+  category_id: string | number
+) {
+  return myAxios
+    .post(`/category/expenses/${id}`, { category_id })
+    .then((res) => res.data)
     .catch((err) => console.error(err));
 }
