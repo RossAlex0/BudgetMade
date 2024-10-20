@@ -43,9 +43,7 @@ export default function BudgetAccount({
       <>
         <View style={AccountStyle.account_body}>
           <Image source={money} style={BudgetAccountStyle.image} />
-          <Text style={BudgetAccountStyle.title}>
-            Bienvenue {userLog.name} !
-          </Text>
+          <Text style={BudgetAccountStyle.title}>Budget mensuelle</Text>
           <Text style={BudgetAccountStyle.text}>
             Pour mieux gérer tes dépenses, nous avons besoin de connaître ton
             budget mensuelles totale.

@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 
-import Icon from "react-native-vector-icons/Ionicons";
+import CategoryCard from "@/src/component/tabs/categoryCard";
+import ArcChart from "@/src/component/tabs/ArcChart";
 
 import { UserContext } from "@/src/service/context/UserContext";
 import { CategoriesJoinInterface } from "@/src/service/type/apiType/userCatJoinCat";
@@ -20,42 +21,19 @@ export default function Home() {
     if (userLog) {
       getUserJoinCategoryById(userLog.id, setCategoriesData);
     }
-  }, []);
+  }, [userLog]);
   return (
     <View style={HomeStyle.home}>
       <View style={HomeStyle.home_header}>
         <Text style={HomeStyle.home_header_text}>
           Bonjour {userLog?.name} 👋
         </Text>
+        {categoriesData && <ArcChart categories={categoriesData} />}
         <Text style={HomeStyle.home_header_text}>Détail de vos dépenses</Text>
       </View>
       <ScrollView style={HomeStyle.home_body}>
         {categoriesData?.map((category) => (
-          <View
-            key={category.name}
-            style={[HomeStyle.map, { backgroundColor: category.colorbg }]}
-          >
-            <View style={HomeStyle.map_element}>
-              <View style={HomeStyle.container}>
-                <Text
-                  style={HomeStyle.container_textname}
-                  numberOfLines={1}
-                  ellipsizeMode="tail"
-                >
-                  {category.name}
-                </Text>
-                <Text style={HomeStyle.container_text}>{category.cap} €</Text>
-              </View>
-              <View
-                style={[HomeStyle.cap, { backgroundColor: category.colormid }]}
-              >
-                <View
-                  style={[HomeStyle.range, { backgroundColor: category.color }]}
-                />
-              </View>
-            </View>
-            <Icon name={category.icon} color={category.color} size={24} />
-          </View>
+          <CategoryCard category={category} key={category.name} />
         ))}
       </ScrollView>
     </View>

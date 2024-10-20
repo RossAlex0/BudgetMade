@@ -9,7 +9,7 @@ export const HomeStyle = StyleSheet.create({
     backgroundColor: colors.background_color,
   },
   home_header: {
-    height: "10%",
+    height: "30%",
   },
   home_header_text: {
     fontFamily: "SemiBold",
@@ -45,7 +45,7 @@ export const HomeStyle = StyleSheet.create({
     justifyContent: "space-between",
   },
   container_textname: {
-    width: "80%",
+    width: "70%",
     fontFamily: "SemiBold",
     fontSize: 15,
   },
@@ -60,10 +60,38 @@ export const HomeStyle = StyleSheet.create({
   },
   range: {
     height: "100%",
-    width: "33%",
     borderRadius: 24,
   },
   icon: {
     margin: "auto",
+  },
+});
+
+export const Chartstyle = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: 16,
+  },
+  title: {
+    fontSize: 24,
+    margin: 10,
+  },
+  chartContainer: {
+    width: 250,
+    height: 125,
+    overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+  },
+  halfRing: {
+    transform: [{ rotate: "-90deg" }],
+    borderRadius: 240,
+  },
+  text: {
+    fontFamily: "SemiBold",
+    fontSize: 26,
+    position: "absolute",
+    top: 80,
   },
 });
