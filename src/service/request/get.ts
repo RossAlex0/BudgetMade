@@ -1,3 +1,4 @@
+import { ExpenseUserInterface } from "../type/apiType/expenseType";
 import { UserCatInterface } from "../type/apiType/userCategoryType";
 import { CategoriesJoinInterface } from "../type/apiType/userCatJoinCat";
 import { UserLog } from "../type/contextType/userType";
@@ -34,6 +35,16 @@ export function getUserJoinCategoryById(
 ) {
   myAxios
     .get(`/usercategoryall/${id.toString()}`)
+    .then((res) => setter(res.data))
+    .catch((err) => console.error(err));
+}
+
+export function getAllExpenseByUser(
+  id: number | string,
+  setter: (state: ExpenseUserInterface[]) => void
+) {
+  myAxios
+    .get(`/expenses/${id.toString()}`)
     .then((res) => setter(res.data))
     .catch((err) => console.error(err));
 }
