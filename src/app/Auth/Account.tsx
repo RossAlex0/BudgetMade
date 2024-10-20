@@ -8,6 +8,7 @@ import SpendingAccount from "@/src/component/auth/SpendingAccount";
 
 import { AccountStyle } from "@/src/style/auth/account";
 import { colors } from "@/src/style/colors";
+import BankAccount from "@/src/component/auth/BankAccount";
 
 export default function AccountConfig() {
   const [counter, setCounter] = useState(1);
@@ -16,7 +17,7 @@ export default function AccountConfig() {
 
   useEffect(() => {
     Animated.timing(widthAnim, {
-      toValue: ((counter * 33 + 1) / 100) * 100,
+      toValue: counter * 25,
       duration: 800,
       useNativeDriver: false,
     }).start();
@@ -41,15 +42,18 @@ export default function AccountConfig() {
             />
           </Animated.View>
         </View>
-        <Text style={AccountStyle.account_header_text}>Étapes {counter}/3</Text>
+        <Text style={AccountStyle.account_header_text}>Étapes {counter}/4</Text>
       </View>
       {counter === 1 && (
-        <BudgetAccount counter={counter} setCounter={setCounter} />
+        <BankAccount counter={counter} setCounter={setCounter} />
       )}
       {counter === 2 && (
-        <CategoryAccount counter={counter} setCounter={setCounter} />
+        <BudgetAccount counter={counter} setCounter={setCounter} />
       )}
       {counter === 3 && (
+        <CategoryAccount counter={counter} setCounter={setCounter} />
+      )}
+      {counter === 4 && (
         <SpendingAccount counter={counter} setCounter={setCounter} />
       )}
     </View>

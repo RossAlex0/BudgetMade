@@ -22,9 +22,7 @@ import { postDataStorage } from "@/src/service/request/storage";
 
 export default function Login() {
   const logo = require("../../../assets/logo/logo.png");
-  const { userLog, setUserLog } = useContext(
-    UserContext
-  ) as UserContextInterface;
+  const { reload, setReload } = useContext(UserContext) as UserContextInterface;
 
   const [userSign, setUserSign] = useState({ email: "", password: "" });
   const [isFocuse, setIsFocuse] = useState(false);
@@ -32,9 +30,9 @@ export default function Login() {
   const HandlePostLogin = async () => {
     if (userSign.email !== "" && userSign.email !== "") {
       const response = await postLogin(userSign);
-      console.info(response);
       if (response) {
         await postDataStorage(response);
+        setReload(!reload);
         router.replace("/tabs/");
       }
     }
