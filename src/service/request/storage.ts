@@ -44,7 +44,6 @@ const getDataStorage = async (): Promise<{
     const id = (await SecureStore.getItemAsync("idBm")) || "";
     const theme = (await SecureStore.getItemAsync("themeBm")) || "";
     const token = (await SecureStore.getItemAsync("tokenBm")) || "";
-    console.info("stor", id, name, email, token, salary);
     return { id, name, email, salary, token, theme };
   } catch (error) {
     console.error(error);
