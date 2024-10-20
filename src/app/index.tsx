@@ -8,11 +8,10 @@ export default function App() {
   const { userLog, isLoading } = useContext(
     UserContext
   ) as UserContextInterface;
-
   useEffect(() => {
     setTimeout(() => {
       if (!isLoading) {
-        if (userLog) {
+        if (userLog?.email !== "") {
           router.push("/tabs/");
         } else {
           router.push("/auth/");
