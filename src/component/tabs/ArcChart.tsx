@@ -17,6 +17,7 @@ export default function ArcChart({
 }) {
   const [series, setSeries] = useState<number[]>();
   const [sliceColor, setSliceColor] = useState<string[]>();
+  const [expense, setExpense] = useState(0);
   const { userLog } = useContext(UserContext) as UserContextInterface;
 
   const chartValues = async () => {
@@ -37,7 +38,7 @@ export default function ArcChart({
       const expenses = await Promise.all(expensesPromises);
 
       const totalDonut = salary - expenses.reduce((acc, sum) => acc + sum, 0);
-
+      setExpense(expenses.reduce((acc, sum) => acc + sum, 0));
       if (salary < expenses.reduce((acc, sum) => acc + sum, 0)) {
         setSeries([1]);
         setSliceColor(["red"]);
@@ -67,7 +68,10 @@ export default function ArcChart({
             coverFill={"transparent"}
             style={Chartstyle.halfRing}
           />
-          <Text style={Chartstyle.text}>{userLog?.salary} €</Text>
+          <View style={Chartstyle.element_budget}>
+            <Text style={Chartstyle.expense}>{expense && expense} €</Text>
+            <Text style={Chartstyle.text}>{userLog?.salary} €</Text>
+          </View>
         </View>
       </View>
     )
