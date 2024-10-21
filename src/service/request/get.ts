@@ -1,3 +1,4 @@
+import { CategoriesInterface } from "../type/apiType/categoryType";
 import { ExpenseUserInterface } from "../type/apiType/expenseType";
 import { UserCatInterface } from "../type/apiType/userCategoryType";
 import { CategoriesJoinInterface } from "../type/apiType/userCatJoinCat";
@@ -47,4 +48,14 @@ export function getAllExpenseByUser(
     .get(`/expenses/${id.toString()}`)
     .then((res) => setter(res.data))
     .catch((err) => console.error(err));
+}
+
+export function getCategoriesNotIn(
+  id: number | string,
+  setter: (state: CategoriesInterface[]) => void
+) {
+  myAxios
+    .get(`/not/categories/${id}`)
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error.message));
 }

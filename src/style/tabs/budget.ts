@@ -99,3 +99,19 @@ export const BudgetDetailsStyle = StyleSheet.create({
   },
   detail_right: {},
 });
+
+export const BudgetCatsStyle = StyleSheet.create({
+  container: {},
+  container_header: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingBottom: 24,
+    paddingHorizontal: 48,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray_color,
+  },
+  container_header_text: {
+    fontFamily: "SemiBold",
+  },
+});
