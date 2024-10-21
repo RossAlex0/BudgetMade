@@ -21,7 +21,7 @@ function UserProvider({ children }: { children: React.ReactNode }) {
     const getUserData = async () => {
       const response = await getDataStorage();
       if (response) {
-        setUserLog(response);
+        await getUserById(parseInt(response.id), setUserLog);
       }
       setIsLoading(false);
     };
