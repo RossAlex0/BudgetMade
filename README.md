@@ -1,6 +1,7 @@
 # 💶 BudgetMade 💶
 ## ⚙️ With React-Native & Expo-router / IOS / Android
 
+#### BudgetMade is a mobile application designed to help users track and manage their expenses efficiently. With an intuitive interface, users can easily log their transactions and categorize them (e.g., food, entertainment, transportation) to gain better insights into their spending habits. Built on an Express backend and utilizing a MySQL database, BudgetMade ensures quick and secure data management. This app provides a straightforward solution for individuals looking to take control of their finances.
 ---
 
 ## 🎨 Screen
@@ -20,7 +21,7 @@
 
 ---
 
- - ### 🏠 Home Page:
+ - ### 💳 Budget:
 
   <img src="https://github.com/RossAlex0/BudgetMade/blob/main/assets/readme/budget.png" alt="Cover" width="180"/>
 
