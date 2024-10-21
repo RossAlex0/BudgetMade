@@ -88,10 +88,22 @@ export const Chartstyle = StyleSheet.create({
     transform: [{ rotate: "-90deg" }],
     borderRadius: 240,
   },
+  element_budget: {
+    position: "absolute",
+    top: 64,
+    display: "flex",
+    alignItems: "center",
+  },
+  expense: {
+    fontFamily: "Regular",
+    color: colors.font_color,
+    opacity: 0.5,
+    fontSize: 15,
+    marginBottom: -8,
+  },
   text: {
     fontFamily: "SemiBold",
     fontSize: 26,
-    position: "absolute",
-    top: 80,
+    color: colors.font_color,
   },
 });
